@@ -19,3 +19,4 @@ libfindora = { path = "../libfindora" }
 zei = { git = "ssh://git@github.com/FindoraNetwork/zei", branch = "feat-refactor" }
 rand_core = { version = "0.5", default-features = false, features = ["alloc"] }
 rand_chacha = "0.2.2"
+clap = "3.0.0-beta.1"
