@@ -26,6 +26,8 @@ impl Opts {
     pub async fn execute(&self) -> Result<()> {
         let config = Config::load(&self.home, &self.config)?;
 
+        log::debug!("Config info is {:?}", config);
+
         match &self.subcmd {
             SubCommand::Setup(c) => c.execute(config).await?,
             SubCommand::Execute(c) => c.execute(config).await?,
