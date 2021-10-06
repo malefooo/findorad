@@ -25,7 +25,7 @@ impl Command {
 
         if let Some(addr) = &self.set_server_address {
             config.node.address = addr.clone();
-            config.save()?;
+            // config.save()?;
         }
 
         Ok(())

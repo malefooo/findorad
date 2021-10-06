@@ -56,7 +56,7 @@ pub async fn get_value_map(wallets: Vec<XfrKeyPair>) -> Result<BTreeMap<AssetTyp
 pub async fn read_list(config: &Config, batch: &str) -> Result<Vec<Entry>> {
     let p = if batch == "" { "default" } else { batch };
 
-    let path_dir = config.node.home.clone().join("batch");
+    let path_dir = config.cli.home.clone().join("batch");
     let path = path_dir.join(p);
 
     let list = if !path.exists() {
@@ -73,7 +73,7 @@ pub async fn read_list(config: &Config, batch: &str) -> Result<Vec<Entry>> {
 pub async fn write_list(config: &Config, batch: &str, list: Vec<Entry>) -> Result<()> {
     let p = if batch == "" { "default" } else { batch };
 
-    let path = config.node.home.clone().join("batch").join(p);
+    let path = config.cli.home.clone().join("batch").join(p);
 
     let mut l = read_list(config, batch).await?;
     let mut list = list;
@@ -88,7 +88,7 @@ pub async fn write_list(config: &Config, batch: &str, list: Vec<Entry>) -> Resul
 pub async fn clean_list(config: &Config, batch: &str) -> Result<()> {
     let p = if batch == "" { "default" } else { batch };
 
-    let path = config.node.home.clone().join("batch").join(p);
+    let path = config.cli.home.clone().join("batch").join(p);
 
     tokio::fs::remove_file(path).await.c(d!())?;
 

@@ -108,7 +108,7 @@ impl AccountEntry {
     }
 
     pub fn save(aes: &mut Vec<AccountEntry>, config: &Config, is_cover: bool) -> Result<()> {
-        let mut path = config.node.home.clone();
+        let mut path = config.cli.home.clone();
         path.push("_account");
 
         let bytes = if !is_cover {
@@ -125,7 +125,7 @@ impl AccountEntry {
     }
 
     pub fn read(config: &Config) -> Result<Vec<AccountEntry>> {
-        let mut path = config.node.home.clone();
+        let mut path = config.cli.home.clone();
         path.push("_account");
 
         if !path.as_path().exists() {
